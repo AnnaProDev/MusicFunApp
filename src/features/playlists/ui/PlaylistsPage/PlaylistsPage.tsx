@@ -10,52 +10,6 @@ import { useState } from "react";
 import { EditPlaylistForm } from "./EditPlaylistForm/EditPlaylistForm";
 import { PlaylistItem } from "./PlaylistItem/PlaylistItem";
 
-// export const PlaylistsPage = () => {
-// 	const { data } = useFetchPlaylistsQuery();
-// 	const [deletePlaylist] = useDeletePlaylistMutation();
-// 	const [updatePlaylist] = useUpdatePlaylistMutation();
-
-// 	const deletePlaylistHandler = (playlistId: string) => {
-// 		if (confirm("Are you sure you want to delete the playlist?")) {
-// 			deletePlaylist(playlistId);
-// 		}
-// 	};
-
-// 	const updatePlaylistHandler = (playlistId: string) => {
-// 		updatePlaylist({
-// 			playlistId,
-// 			body: {
-// 				title: "🎶1",
-// 				description: "🤩2",
-// 				tagIds: [],
-// 			},
-// 		});
-// 	};
-
-// 	return (
-// 		<div className={s.container}>
-// 			<h1>Playlists page</h1>
-// 			<CreatePlaylistForm />
-// 			<div className={s.items}>
-// 				{data?.data.map((playlist) => {
-// 					return (
-// 						<div className={s.item} key={playlist.id}>
-// 							<div>title: {playlist.attributes.title}</div>
-// 							<div>description: {playlist.attributes.description}</div>
-// 							<div>userName: {playlist.attributes.user.name}</div>
-// 							<button onClick={() => deletePlaylistHandler(playlist.id)}>
-// 								Delete
-// 							</button>
-// 							<button onClick={() => updatePlaylistHandler(playlist.id)}>
-// 								Edit
-// 							</button>
-// 						</div>
-// 					);
-// 				})}
-// 			</div>
-// 		</div>
-// 	);
-// };
 
 export const PlaylistsPage = () => {
 	const [playlistId, setPlaylistId] = useState<string | null>(null);
