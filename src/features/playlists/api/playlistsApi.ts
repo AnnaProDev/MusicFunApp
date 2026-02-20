@@ -1,3 +1,4 @@
+import type { Images } from "@/common/types";
 import type {
 	CreatePlaylistArgs,
 	PlaylistData,
@@ -7,7 +8,6 @@ import type {
 import { baseApi } from "@/app/api/baseApi";
 
 export const playlistsApi = baseApi.injectEndpoints({
-
 	endpoints: (build) => ({
 		fetchPlaylists: build.query<PlaylistsResponse, void>({
 			query: () => {
@@ -16,7 +16,7 @@ export const playlistsApi = baseApi.injectEndpoints({
 					method: "GET",
 				};
 			},
-			providesTags: ['Playlist'],
+			providesTags: ["Playlist"],
 		}),
 		createPlaylist: build.mutation<{ data: PlaylistData }, CreatePlaylistArgs>({
 			query: (body) => ({
@@ -32,16 +32,19 @@ export const playlistsApi = baseApi.injectEndpoints({
 					},
 				},
 			}),
-			invalidatesTags: ['Playlist'],
+			invalidatesTags: ["Playlist"],
 		}),
 		deletePlaylist: build.mutation<void, string>({
 			query: (playlistId) => ({
 				url: `playlists/${playlistId}`,
 				method: "delete",
 			}),
-			invalidatesTags: ['Playlist'],
+			invalidatesTags: ["Playlist"],
 		}),
-		updatePlaylist: build.mutation<void,{ playlistId: string; body: UpdatePlaylistArgs }>({
+		updatePlaylist: build.mutation<
+			void,
+			{ playlistId: string; body: UpdatePlaylistArgs }
+		>({
 			query: ({ playlistId, body }) => ({
 				url: `playlists/${playlistId}`,
 				method: "put",
@@ -52,7 +55,19 @@ export const playlistsApi = baseApi.injectEndpoints({
 					},
 				},
 			}),
-			invalidatesTags: ['Playlist'],
+			invalidatesTags: ["Playlist"],
+		}),
+		uploadPlaylistCovert: build.mutation<Images,	{playlistId: string; file: File }>({
+			query: ({ playlistId, file }) => {
+				const formData = new FormData();
+				formData.append("file", file);
+				return {
+					url: `playlists/${playlistId}/images/main`,
+					method: "post",
+					body: formData,
+				};
+			},
+			invalidatesTags: ["Playlist"],
 		}),
 	}),
 });
@@ -62,4 +77,5 @@ export const {
 	useCreatePlaylistMutation,
 	useDeletePlaylistMutation,
 	useUpdatePlaylistMutation,
+	useUploadPlaylistCovertMutation,
 } = playlistsApi;
