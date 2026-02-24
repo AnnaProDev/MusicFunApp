@@ -1,4 +1,4 @@
-import { MainPage } from "@/app/ui/MainPage/MainPAge";
+import { MainPage } from "@/app/ui/MainPage/MainPage";
 import { PlaylistsPage } from "@/features/playlists/ui/PlaylistsPage/PlaylistsPage";
 import { TracksPage } from "@/features/tracks/ui/TracksPage";
 import { PageNotFound } from "@/common/components";
