@@ -1,6 +1,4 @@
-import {
-	useFetchPlaylistsQuery,
-} from "../../api/playlistsApi";
+import {	useFetchPlaylistsQuery} from "../../api/playlistsApi";
 import { CreatePlaylistForm } from "./CreatePlaylistForm/CreatePlaylistForm";
 import s from "./PlaylistsPage.module.css";
 import { useState, type ChangeEvent } from "react";
@@ -31,10 +29,12 @@ export const PlaylistsPage = () => {
 		setCurrentPage(1);
 	};
 
+	if (isLoading) return <h1>Skeleton loader...</h1>
+
 	return (
 		<div className={s.container}>
 			<h1>Playlists page</h1>
-			<CreatePlaylistForm />
+			<CreatePlaylistForm setCurrentPage={setCurrentPage}/>
 			<input
 				type="search"
 				placeholder={"Search playlist by title"}
