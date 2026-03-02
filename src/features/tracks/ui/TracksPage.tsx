@@ -1,4 +1,4 @@
-import { useInfiniteScroll } from "@/common/hooks/useInfiniteScroll";
+import { useInfiniteScroll } from "@/common/hooks";
 import { useFetchTracksInfiniteQuery } from "../api/tracksApi";
 import { TracksList } from "./TracksList/TracksList";
 import { LoadingTrigger } from "./LoadingTrigger/LoadingTrigger";
